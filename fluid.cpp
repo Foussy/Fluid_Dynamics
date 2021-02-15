@@ -2,7 +2,8 @@
 
 #include "fluid.h"
 
-Fluid::Fluid()
-{
 
+Fluid::Fluid(float dt, float diffusion, float viscosity)
+{
+    this->size = dt;
 }

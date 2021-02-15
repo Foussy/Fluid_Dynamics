@@ -1,6 +1,7 @@
 #ifndef FLUID_H
 #define FLUID_H
 
+#include <boundary.h>
 
 class Fluid
         /*
@@ -8,16 +9,16 @@ class Fluid
          */
 {
     private:
-        int width;  // width of the rectangle
-        int length; // length of the rectangle
-        double dx;  // size of a fluid element
-        double Vx0; // x velocity at t = 0
-        double Vy0; // y velocity at t = 0
+        int width;
+        int height;
+        double dx;
+
+        double vel0;
+
+
 
     public:
-        Fluid(int const& _width, int const& _height, double const& Lwidth);
 
-        void update(double const& dt);
 
 
 };

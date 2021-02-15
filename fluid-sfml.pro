@@ -10,8 +10,11 @@ LIBS += -lsfml-window
 LIBS += -lsfml-system
 
 SOURCES += \
+        field.cpp \
         fluid.cpp \
         main.cpp
 
 HEADERS += \
+    boundary.h \
+    field.h \
     fluid.h
