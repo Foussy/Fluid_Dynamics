@@ -5,7 +5,7 @@
 
 class Fluid
         /*
-         * this class describes the area in which the fluid is contained
+         * this class describes a fluid element
          */
 {
     private:

@@ -1,16 +1,17 @@
 #ifndef BOUNDARY_H
 #define BOUNDARY_H
 
-#include <iostream>
-
 enum bnd { fluid, in, out};
 enum loc { center, edge, corner, err = 20};
 
-template <typename T>
-class Wall
+
+class boundary
+        /*
+         * this class describes the boundaries of a fluid element
+         */
 {
 public:
-    Wall() : bnd(fluid), N(0), S(0), E(0), W(0), neighbour(0), loc(center) {}
+    boundary() : bnd(fluid), loc(center), N(0), S(0), E(0), W(0), neighbour(0){}
 
     bnd bnd;
     loc loc;
