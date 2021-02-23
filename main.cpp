@@ -1,8 +1,6 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
-using namespace std;
-
 int main()
 {
     // Adding anti-aliasing
@@ -20,8 +18,8 @@ int main()
     sf::Sprite sprite;      // drawable representation of texture, color, etc...
     sf::VertexArray VA;     // define a set of one 2D primitive
 
-    // definition of the Fluid
-    image.create(width, height, sf::Color::Red);
+    // image init
+    image.create(width, height, sf::Color::Black);
 	texture.loadFromImage(image);
 	sprite.setTexture(texture, true);
 	VA.setPrimitiveType(sf::Lines);
