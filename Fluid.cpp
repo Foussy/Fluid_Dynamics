@@ -3,9 +3,12 @@
 #define IX(i,j) ((i)+(N)*(j))                   // macro to access (i,j) position on the grid
 #define SWAP(x0,x) {float* tmp=x0;x0=x;x=tmp;}  // macro thats swaps the two array pointers
 
-Fluid::Fluid(){}
-
-Fluid::~Fluid(){}
+Fluid::Fluid(float dt, float diff, float visc) 
+{   
+    this->dt = dt;
+    this->diff = diff;
+    this->visc = visc;
+};
 
 void Fluid::add_source(int N, float *x, float *s, float dt)
 // this routine adds the source s[] to the density. 

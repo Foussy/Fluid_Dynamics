@@ -1,6 +1,7 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
-#include <Fluid.h>
+#include </home/foussy/Programming/C++/Fluid_Dynamics/Fluid.h>
+#include <Grid.h>
 
 #define IX(i,j) ((i)+(N)*(j))
 
@@ -9,7 +10,7 @@ int main ()
     sf::ContextSettings AAsettings;
     AAsettings.antialiasingLevel = 8;
 
-    const int N = 800;
+    const int N = 500;
     int width = N, height = N;
     sf::RenderWindow window(sf::VideoMode(width, height), 
         "Fluid Simulation", sf::Style::Default, AAsettings);
@@ -25,9 +26,10 @@ int main ()
 	sprite.setTexture(texture, true);
 	VA.setPrimitiveType(sf::Lines);
 
-    Fluid fluid;
 
-    float dt = 0.1;
+    Fluid fluid(0.1, 0, 0);
+    Grid grid(N*N);
+    
 
     while (window.isOpen())
         {
@@ -37,25 +39,22 @@ int main ()
             vel_step(N, u, v, u_prev, v_prev, visc, dt)
             dens_step(N, dens, dens_prev, u, v, diff, dt)
             */
-           
+           sf::Event e;
+           while (window.pollEvent(e))
+            {
+                if (e.type == sf::Event::Closed)
+                    window.close();
+            }            
+
             window.clear();
-
-            // Draw the scalar field
-            float r(0), g(0), b(0);
             for (int i(0); i < width; i++)
-                for (int j(0); j < height; j++)
-                    image.setPixel(i, j, sf::Color(255.f*r, 255.f*g, 255.f*b));
-            
-            // Draw the boundaries
-            for (int i(0); i < width; i++)
-		        for (int j(0); j < height; j++)
+                {
+                    for (int j(0); j < height; j++)
                     {
-                        if(/* Pixel i,j a fluid*/ true) image.setPixel(i, j, sf::Color::Transparent);
-                    
-                        // Pixel i,j is a boundary
-			            else image.setPixel(i, j, sf::Color(255.f*r, 255.f*g, 255.f*b));
-                    }     
-
+                        // float d = fluid[IX(i,j)].density * 255;
+                        // image.setPixel(i, j, sf::Color(d, d, d));
+                    }
+                }
             texture.loadFromImage(image);
 	        sprite.setTexture(texture, true);
 	        window.draw(sprite);

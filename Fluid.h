@@ -3,18 +3,19 @@
 
 class Fluid
 {
-    private:
+    public:
+        float dt;
         float diff;
         float visc;
-        float s;
+        
         float density;
+
         float Vx;
         float Vy;
         float Vx0;
-        float Vy0;        
-    public:
-        Fluid();    // constructor
-        ~Fluid();   // destructor
+        float Vy0;  
+
+        Fluid(float dt, float diff, float visc) {} // constructor
         void add_source(int N, float *x, float *s, float dt);
         void set_bound(int N, int b, float *x);
         void diffuse(int N, int b, float *x, float *x0, float diff, float dt);
